@@ -1,0 +1,243 @@
+syntax = "proto3";
+
+package ludicrypt;
+
+service CryptoProvider {
+  // NCRYPT_KEY_STORAGE_INTERFACE_VERSION interface
+  //rpc OpenStorageProvider (KspOpenStorageProviderRequest) returns (KspOpenStorageProviderResponse);
+  rpc GetKey (GetKeyRequest) returns (GetKeyResponse);
+  rpc CreateKey (CreateKeyRequest) returns (CreateKeyResponse);
+  //rpc GetProviderProperty (KspGetProviderPropertyRequest) returns (KspGetProviderPropertyResponse);
+  //rpc GetKeyProperty (KspGetKeyPropertyRequest) returns (KspGetKeyPropertyResponse);
+  //rpc SetProviderProperty (KspSetProviderPropertyRequest) returns (KspSetProviderPropertyResponse);
+  //rpc SetKeyProperty (KspSetKeyPropertyRequest) returns (KspSetKeyPropertyResponse);
+  //rpc FinalizeKey (KspFinalizeKeyRequest) returns (KspFinalizeKeyResponse);
+  rpc DeleteKey (DeleteKeyRequest) returns (DeleteKeyResponse);
+  //rpc FreeProvider (KspFreeProviderRequest) returns (KspFreeProviderResponse);
+  //rpc FreeKey (KspFreeKeyRequest) returns (KspFreeKeyResponse);
+  //rpc FreeBuffer (KspFreeBufferRequest) returns (KspFreeBufferResponse);
+  rpc Encrypt (EncryptRequest) returns (EncryptResponse);
+  rpc Decrypt (DecryptRequest) returns (DecryptResponse);
+  //rpc IsAlgSupported (KspIsAlgSupportedRequest) returns (KspIsAlgSupportedResponse);
+  //rpc EnumAlgorithms (KspEnumAlgorithmsRequest) returns (KspEnumAlgorithmsResponse);
+  rpc EnumKeys (EnumKeysRequest) returns (EnumKeysResponse);
+  //rpc ImportKey (KspImportKeyRequest) returns (KspImportKeyResponse);
+  //rpc ExportKey (KspExportKeyRequest) returns (KspExportKeyResponse);
+
+  rpc SignHash (SignHashRequest) returns (SignHashResponse);
+  rpc VerifySignature (VerifySignatureRequest) returns (VerifySignatureResponse);
+
+  //rpc PromptUser (KspRequest) returns (KspResponse);
+  //rpc NotifyChangeKey (KspRequest) returns (KspResponse);
+  //rpc SecretAgreement (KspRequest) returns (KspResponse);
+  //rpc DeriveKey (KspRequest) returns (KspResponse);
+  //rpc FreeSecret (KspRequest) returns (KspResponse);
+
+  // NCRYPT_KEY_STORAGE_INTERFACE_VERSION_2 interface
+  //rpc KeyDerivation (KspRequest) returns (KspResponse);
+
+  // NCRYPT_KEY_STORAGE_INTERFACE_VERSION_3 interface
+  //rpc CreateClaim (KspRequest) returns (KspResponse);
+  //rpc VerifyClaim (KspRequest) returns (KspResponse);
+}
+
+//message KspOpenStorageProviderRequest {
+//}
+
+//message KspOpenStorageProviderResponse {
+//}
+
+message GetKeyRequest {
+  string name = 1;
+}
+
+message GetKeyResponse {
+  string name = 1;
+  string algorithm = 2;
+  string identifier = 3;
+  bytes public_exponent = 4;
+  bytes modulus = 5;
+}
+
+message CreateKeyRequest {
+  string name = 1;
+  string algorithm = 2;
+}
+
+message CreateKeyResponse {
+  string name = 1;
+  string algorithm = 2;
+  string identifier = 3;
+}
+
+//message KspGetProviderPropertyRequest {
+//  int64 provider_handle = 1;
+//  string property_name = 2;
+//  uint32 flags = 3;
+//}
+
+//message KspGetProviderPropertyResponse {
+//  bytes property_value = 1;
+//}
+
+//message KspGetKeyPropertyRequest {
+//  int64 provider_handle = 1;
+//  int64 key_handle = 2;
+//  string property_name = 3;
+//  uint32 flags = 4;
+//}
+
+//message KspGetKeyPropertyResponse {
+//  bytes property_value = 1;
+//}
+
+//message KspSetProviderPropertyRequest {
+//  int64 provider_handle = 1;
+//  string property_name = 2;
+//  bytes property_value = 3;
+//  uint32 flags = 4;
+//}
+
+//message KspSetProviderPropertyResponse {
+//}
+
+//message KspSetKeyPropertyRequest {
+//  int64 provider_handle = 1;
+//  int64 key_handle = 2;
+//  string property_name = 3;
+//  bytes property_value = 4;
+//  uint32 flags = 5;
+//}
+
+//message KspSetKeyPropertyResponse {
+//}
+
+//message KspFinalizeKeyRequest {
+//  int64 provider_handle = 1;
+//  int64 key_handle = 2;
+//  uint32 flags = 3;
+//}
+
+//message KspFinalizeKeyResponse {
+//}
+
+message DeleteKeyRequest {
+  string identifier = 1;
+}
+
+message DeleteKeyResponse {
+}
+
+//message KspFreeProviderRequest {
+//  int64 provider_handle = 1;
+//}
+
+//message KspFreeProviderResponse {
+//}
+
+//message KspFreeKeyRequest {
+//  int64 provider_handle = 1;
+//  int64 key_handle = 2;
+//}
+
+//message KspFreeKeyResponse {
+//}
+
+//message KspFreeBufferRequest {
+//  int64 buffer_handle = 1;
+//}
+
+//message KspFreeBufferResponse {
+//}
+
+message EncryptRequest {
+  string identifier = 1;
+  bytes input = 2;
+}
+
+message EncryptResponse {
+  bytes output = 1;
+}
+
+message DecryptRequest {
+  string identifier = 1;
+  bytes input = 2;
+}
+
+message DecryptResponse {
+  bytes output = 1;
+}
+
+//message KspIsAlgSupportedRequest {
+//  int64 provider_handle = 1;
+//  string algorithm = 2;
+//  uint32 flags = 3;
+//}
+
+//message KspIsAlgSupportedResponse {
+//}
+
+//message KspEnumAlgorithmsRequest {
+//  int64 provider_handle = 1;
+//  uint32 algorithm_class = 2;
+//  uint32 flags = 3;
+//}
+
+//message KspEnumAlgorithmsResponse {
+//  bytes algorithms = 2;
+//}
+
+message EnumKeysRequest {
+  string enum_token = 1;
+}
+
+message EnumKeysResponse {
+  string name = 1;
+  string algorithm = 2;
+  string identifier = 3;
+  string enum_token = 4;
+}
+
+//message KspImportKeyRequest {
+//}
+
+//message KspImportKeyResponse {
+//}
+
+//message KspExportKeyRequest {
+//}
+
+//message KspExportKeyResponse {
+//}
+
+message SignHashRequest {
+  string identifier = 1;
+  bytes hash = 2;
+}
+
+message SignHashResponse {
+  bytes signature = 1;
+}
+
+message VerifySignatureRequest {
+  string identifier = 1;
+  bytes hash = 2;
+  bytes signature = 3;
+}
+
+message VerifySignatureResponse {
+}
+
+
+
+
+
+
+
+//message KspRequest {
+//  string name = 1;
+//}
+
+//message KspResponse {
+//  string message = 1;
+//}

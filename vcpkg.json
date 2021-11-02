@@ -1,0 +1,12 @@
+{
+  "name": "ludicrypt",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "protobuf",
+    "grpc",
+    {
+      "name": "boost-nowide",
+      "platform": "windows"
+    }
+  ]
+}

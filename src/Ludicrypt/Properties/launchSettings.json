@@ -1,0 +1,15 @@
+﻿{
+  "profiles": {
+    "Ludicrypt": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5191;https://localhost:7191",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "LUDICRYPT_BACKEND": "../Ludicrypt.Backend.AzureKeyVault/bin/Debug/net6.0/Ludicrypt.Backend.AzureKeyVault.dll",
+        "LUDICRYPT_BACKEND_AZUREKEYVAULT_VAULTURI": "https://ludicrypt.vault.azure.net/"
+      }
+    }
+  }
+}

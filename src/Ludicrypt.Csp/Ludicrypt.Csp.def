@@ -1,0 +1,28 @@
+LIBRARY
+EXPORTS
+    CPAcquireContext
+    CPAcquireContextW
+    CPReleaseContext
+    CPGenKey
+    CPDeriveKey
+    CPDestroyKey
+    CPSetKeyParam
+    CPGetKeyParam
+    CPSetProvParam
+    CPGetProvParam
+    CPSetHashParam
+    CPGetHashParam
+    CPExportKey
+    CPImportKey
+    CPEncrypt
+    CPDecrypt
+    CPCreateHash
+    CPHashData
+    CPHashSessionKey
+    CPSignHash
+    CPDestroyHash
+    CPVerifySignature
+    CPGenRandom
+    CPGetUserKey
+    CPDuplicateHash
+    CPDuplicateKey
